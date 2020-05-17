@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="rdT17EW0Kh1apJgjy5BF3U5QQQKPSnklJwhpzY5TAi4">
+  <meta name="msvalidate.01" content="C8AEF300145F614C5139D7CA80541E48">
+  <meta name="baidu-site-verification" content="mOm9MG2oP2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script data-ad-client="ca-pub-7960294795324770" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="//dup.baidustatic.com/js/ds.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"weiweiblog.cn","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="阅读这篇文章，你将会学会以下内容：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手把手教你用图灵机器人做微信公众号自动回复助手">
+<meta property="og:url" content="https://weiweiblog.cn/tuling_flask/index.html">
+<meta property="og:site_name" content="尾尾部落">
+<meta property="og:description" content="阅读这篇文章，你将会学会以下内容：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4q6n6f14j31kw0gqac3.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1ft4q6msn0rj30pw0m2ab0.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4q6mjjfxj31kw0ywwii.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1ft4q6lzdazj31kw0uh41x.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4q6leyiyj30sk046t8u.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1ft4q6l9pwjj30w609cq3i.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4q6l33xlj30ic066mx2.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4q6kwkntj30zb0oidhi.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4qbw9yv2j319h0qqq4u.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4qci79x1j313q100who.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1ft4qcy0vrmj30ve0nnq3m.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1ft4qd5jqhmj31kw08tq46.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4qdetvxbj30zo0sfabu.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4qe78ejkj313618sgpg.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1ft4qefhrz0j317a17wwi9.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1ft4qelnhofj30hs0vkq3i.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4qsb6w3mj31kw08sgmw.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1ft4rb3a9doj30fw05o3yf.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4r60j0vtj31kw0t1dlb.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1ft4rnilve9j30z404wjrj.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4rnoucbdj30vm0fojsv.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4rwl6815j30sy0ag3ys.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4ryhbuivj30yk05adg9.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4s6z8lr4j30j30763yt.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1ft4rnilve9j30z404wjrj.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4sdilk8bj30h70460sk.jpg">
+<meta property="article:published_time" content="2018-07-09T23:23:13.000Z">
+<meta property="article:modified_time" content="2020-05-17T07:27:05.336Z">
+<meta property="article:author" content="www">
+<meta property="article:tag" content="flask">
+<meta property="article:tag" content="nginx">
+<meta property="article:tag" content="supervisor">
+<meta property="article:tag" content="图灵">
+<meta property="article:tag" content="微信公众号">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4q6n6f14j31kw0gqac3.jpg">
+
+<link rel="canonical" href="https://weiweiblog.cn/tuling_flask/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>手把手教你用图灵机器人做微信公众号自动回复助手 | 尾尾部落</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-75337338-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-75337338-1');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c0cf4eed151bf6c4a0aab22fe95b7495";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="尾尾部落" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">尾尾部落</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">永远年轻，永远热泪盈眶！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">108</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">8</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">131</span></a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/wwwxmu" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://weiweiblog.cn/tuling_flask/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="www">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="尾尾部落">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          手把手教你用图灵机器人做微信公众号自动回复助手
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-10 07:23:13" itemprop="dateCreated datePublished" datetime="2018-07-10T07:23:13+08:00">2018-07-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-17 15:27:05" itemprop="dateModified" datetime="2020-05-17T15:27:05+08:00">2020-05-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/tuling_flask/" class="post-meta-item leancloud_visitors" data-flag-title="手把手教你用图灵机器人做微信公众号自动回复助手" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/tuling_flask/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/tuling_flask/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>阅读这篇文章，你将会学会以下内容：</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>如何用flask搭建微信公众平台服务</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>如何将在微信公众平台调用图灵机器人</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>如何用uwsgi+supervisor+nginx部署flask应用 </li>
+</ol>
+</blockquote>
+<h3 id="实验前提"><a href="#实验前提" class="headerlink" title="实验前提"></a>实验前提</h3><ul>
+<li>一个可供外网访问的主机（比如云服务器）</li>
+<li>一个微信公众号</li>
+<li>一个图灵机器人账号</li>
+</ul>
+<h3 id="一、创建图灵机器人"><a href="#一、创建图灵机器人" class="headerlink" title="一、创建图灵机器人"></a>一、创建图灵机器人</h3><p>登陆<a href="http://www.tuling123.com/" target="_blank" rel="noopener">图灵机器人</a>后，在个人主面点击<code>创建机器人</code>：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4q6n6f14j31kw0gqac3.jpg" alt=""></p>
+<p>填写相关信息：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1ft4q6msn0rj30pw0m2ab0.jpg" alt=""></p>
+<p>创建成功后，会自动跳转到<code>机器人设置</code>界面，在这里你可以对机器人进行个性化定制。其实，图灵机器人提供简单的方法，快速接入微信公众号，这太没有挑战性了，对于喜欢搞事情的我们，肯定不能选择这种方法。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4q6mjjfxj31kw0ywwii.jpg" alt=""></p>
+<p>我们将鼠标往下滑，会出现<code>api接入</code>，这个apikey就是我们等等用来接入微信公众号的密钥。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1ft4q6lzdazj31kw0uh41x.jpg" alt=""></p>
+<p>至此，图灵机器人准备完毕。</p>
+<h3 id="二、接入微信公众号"><a href="#二、接入微信公众号" class="headerlink" title="二、接入微信公众号"></a>二、接入微信公众号</h3><p>跟着<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1472017492_58YV5" target="_blank" rel="noopener">微信公众平台开发文档</a>一步一步往下走即可，只不过，我们这里使用<code>Flask</code>代替<code>web.py</code>。为什么使用<code>Flask</code>?</p>
+<blockquote>
+<p>喜欢。任性。 </p>
+</blockquote>
+<p>主要步骤：</p>
+<h4 id="1-搭建服务"><a href="#1-搭建服务" class="headerlink" title="1. 搭建服务"></a>1. 搭建服务</h4><p>这里以Ubuntu 16.04.2 LTS的云服务器为例进行说明。</p>
+<p>准备环境：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 创建项目目录</span><br><span class="line">mkdir -p &#x2F;var&#x2F;www&#x2F;weixin</span><br><span class="line"># 进入项目目录</span><br><span class="line">cd &#x2F;var&#x2F;www&#x2F;weixin</span><br><span class="line"># 安装virtualenv包管理工具</span><br><span class="line">apt install virtualenv</span><br><span class="line"># 创建项目虚拟环境</span><br><span class="line">virtualenv venv</span><br><span class="line"># 激活环境</span><br><span class="line">source venv&#x2F;bin&#x2F;activate</span><br></pre></td></tr></table></figure>
+
+<p>成功激活环境后，会出现<code>（venv）</code></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4q6leyiyj30sk046t8u.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 安装Flask包</span><br><span class="line">pip install flask</span><br><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
+
+<p>使用如下代码创建<code>run.py</code>文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route("/")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Hello World!"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    app.run(host=<span class="string">'0.0.0.0'</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行<code>python run.py</code>，这样服务就启动起来了。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1ft4q6l9pwjj30w609cq3i.jpg" alt=""></p>
+<p>你可以通过浏览器，输入<code>x.x.x.x:5000</code>来访问你的服务。</p>
+<blockquote>
+<p>这里的<code>x.x.x.x</code>是你云主机的ip地址，比如<code>100.39.101.123</code>，下同。 </p>
+</blockquote>
+<p>如果成功，就会看到如下界面：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4q6l33xlj30ic066mx2.jpg" alt=""></p>
+<p>接下来，进入<a href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">微信公众平台</a>，点击<code>基本配置</code></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4q6kwkntj30zb0oidhi.jpg" alt=""></p>
+<p>点击<code>修改配置</code>，填写服务器基本配置：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4qbw9yv2j319h0qqq4u.jpg" alt=""></p>
+<p>这时候，你还没有配置服务器信息，还不能提交。</p>
+<p>先放着，我们回到云服务器，打开<code>run.py</code>文件，</p>
+<p>添加验证所需要的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> request</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route("/")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Hello World!"</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route("/wechat", methods=["GET","POST"])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weixin</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">"GET"</span>:     <span class="comment"># 判断请求方式是GET请求</span></span><br><span class="line">        my_signature = request.args.get(<span class="string">'signature'</span>)     <span class="comment"># 获取携带的signature参数</span></span><br><span class="line">        my_timestamp = request.args.get(<span class="string">'timestamp'</span>)     <span class="comment"># 获取携带的timestamp参数</span></span><br><span class="line">        my_nonce = request.args.get(<span class="string">'nonce'</span>)        <span class="comment"># 获取携带的nonce参数</span></span><br><span class="line">        my_echostr = request.args.get(<span class="string">'echostr'</span>)         <span class="comment"># 获取携带的echostr参数</span></span><br><span class="line"></span><br><span class="line">        token = <span class="string">'Your token'</span>     <span class="comment"># 一定要跟刚刚填写的token一致</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进行字典排序</span></span><br><span class="line">        data = [token,my_timestamp ,my_nonce ]</span><br><span class="line">        data.sort()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 拼接成字符串</span></span><br><span class="line">        temp = <span class="string">''</span>.join(data)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进行sha1加密</span></span><br><span class="line">        mysignature = hashlib.sha1(temp).hexdigest()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 加密后的字符串可与signature对比，标识该请求来源于微信</span></span><br><span class="line">        <span class="keyword">if</span> my_signature == mysignature:</span><br><span class="line">            <span class="keyword">return</span> my_echostr</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    app.run(host=<span class="string">'0.0.0.0'</span>, port=<span class="number">80</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4qci79x1j313q100who.jpg" alt=""></p>
+<p>保存，再运行<code>python run.py</code></p>
+<p>回到微信公众平台，点击<code>提交</code>，<code>确定</code>，收到<code>提交成功</code>的提示，表明配置成功。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ft4qcy0vrmj30ve0nnq3m.jpg" alt=""></p>
+<p>回到云服务器，可以看到微信公众平台往我们的服务器发了一个GET请求，并且我们成功地返回了验证信息。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1ft4qd5jqhmj31kw08tq46.jpg" alt=""></p>
+<p>再回到公众平台，点击<code>启用</code>，可以看到<code>服务器配置（已启用）</code>的字样。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4qdetvxbj30zo0sfabu.jpg" alt=""></p>
+<p>至此，我们已经成功将我们的服务与微信公众平台连接上了。</p>
+<h4 id="2-接入图灵机器人"><a href="#2-接入图灵机器人" class="headerlink" title="2. 接入图灵机器人"></a>2. 接入图灵机器人</h4><p>打开<code>run.py</code>文件，添加代码引入图灵机器人：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> request</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> xml.etree.ElementTree <span class="keyword">as</span> ET</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route("/")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Hello World!"</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route("/wechat", methods=["GET","POST"])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weixin</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">"GET"</span>:     <span class="comment"># 判断请求方式是GET请求</span></span><br><span class="line">        my_signature = request.args.get(<span class="string">'signature'</span>)     <span class="comment"># 获取携带的signature参数</span></span><br><span class="line">        my_timestamp = request.args.get(<span class="string">'timestamp'</span>)     <span class="comment"># 获取携带的timestamp参数</span></span><br><span class="line">        my_nonce = request.args.get(<span class="string">'nonce'</span>)        <span class="comment"># 获取携带的nonce参数</span></span><br><span class="line">        my_echostr = request.args.get(<span class="string">'echostr'</span>)         <span class="comment"># 获取携带的echostr参数</span></span><br><span class="line"></span><br><span class="line">        token = <span class="string">'Your token'</span>     <span class="comment"># 一定要跟刚刚填写的token一致</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进行字典排序</span></span><br><span class="line">        data = [token,my_timestamp ,my_nonce ]</span><br><span class="line">        data.sort()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 拼接成字符串</span></span><br><span class="line">        temp = <span class="string">''</span>.join(data)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进行sha1加密</span></span><br><span class="line">        mysignature = hashlib.sha1(temp).hexdigest()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 加密后的字符串可与signature对比，标识该请求来源于微信</span></span><br><span class="line">        <span class="keyword">if</span> my_signature == mysignature:</span><br><span class="line">            <span class="keyword">return</span> my_echostr</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 解析xml</span></span><br><span class="line">        xml = ET.fromstring(request.data)</span><br><span class="line">        toUser = xml.find(<span class="string">'ToUserName'</span>).text</span><br><span class="line">        fromUser = xml.find(<span class="string">'FromUserName'</span>).text</span><br><span class="line">        msgType = xml.find(<span class="string">"MsgType"</span>).text</span><br><span class="line">        createTime = xml.find(<span class="string">"CreateTime"</span>)</span><br><span class="line">        <span class="comment"># 判断类型并回复</span></span><br><span class="line">        <span class="keyword">if</span> msgType == <span class="string">"text"</span>:</span><br><span class="line">            content = xml.find(<span class="string">'Content'</span>).text</span><br><span class="line">            <span class="keyword">return</span> reply_text(fromUser, toUser, reply(fromUser, content))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> reply_text(fromUser, toUser, <span class="string">"我只懂文字"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reply_text</span><span class="params">(to_user, from_user, content)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    以文本类型的方式回复请求</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"""</span></span><br><span class="line"><span class="string">    &amp;lt;xml&amp;gt;</span></span><br><span class="line"><span class="string">        &amp;lt;ToUserName&amp;gt;&amp;lt;![CDATA[&#123;&#125;]]&amp;gt;&amp;lt;/ToUserName&amp;gt;</span></span><br><span class="line"><span class="string">        &amp;lt;FromUserName&amp;gt;&amp;lt;![CDATA[&#123;&#125;]]&amp;gt;&amp;lt;/FromUserName&amp;gt;</span></span><br><span class="line"><span class="string">        &amp;lt;CreateTime&amp;gt;&#123;&#125;&amp;lt;/CreateTime&amp;gt;</span></span><br><span class="line"><span class="string">        &amp;lt;MsgType&amp;gt;&amp;lt;![CDATA]&amp;gt;&amp;lt;/MsgType&amp;gt;</span></span><br><span class="line"><span class="string">        &amp;lt;Content&amp;gt;&amp;lt;![CDATA[&#123;&#125;]]&amp;gt;&amp;lt;/Content&amp;gt;</span></span><br><span class="line"><span class="string">    &amp;lt;/xml&amp;gt;</span></span><br><span class="line"><span class="string">    """</span>.format(to_user, from_user, int(time.time() * <span class="number">1000</span>), content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reply</span><span class="params">(openid, msg)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    使用图灵机器人</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    data = &#123;<span class="string">"key"</span>: <span class="string">"Your tuling apikey"</span>, <span class="string">"info"</span>: msg, <span class="string">"userid"</span>: openid&#125;<span class="comment">#  使用自己的key</span></span><br><span class="line">    r = requests.post(<span class="string">'http://openapi.tuling123.com/openapi/api'</span>, data)</span><br><span class="line">    text = json.loads(r.text)</span><br><span class="line">    <span class="keyword">return</span> text[<span class="string">'text'</span>].encode(<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    app.run(host=<span class="string">'0.0.0.0'</span>,port=<span class="number">80</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4qe78ejkj313618sgpg.jpg" alt=""></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1ft4qefhrz0j317a17wwi9.jpg" alt=""></p>
+<p>保存后，运行<code>python run.py</code></p>
+<p>这时候，你就可以在你的手机微信公众号窗口调戏图灵机器人了：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ft4qelnhofj30hs0vkq3i.jpg" alt=""></p>
+<p>到这里，你以为结束了吗？还早着呢。</p>
+<h3 id="三、部署flask服务"><a href="#三、部署flask服务" class="headerlink" title="三、部署flask服务"></a>三、部署flask服务</h3><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4qsb6w3mj31kw08sgmw.jpg" alt=""></p>
+<p>正如你所看到了，当你运行<code>python run.py</code>，服务就运行起来了，但是当你按下<code>ctrl+c</code>或者断开与云服务器的连接，服务就自动掉线了，这时候，你再呼唤图灵机器人，它就无应答了。因此，直接运行<code>python run.py</code>这种方法只适合本地开发调试，线上用这种方法不稳定，我们需要使用<code>uwsgi</code>。</p>
+<p>安装<code>uwsgi</code>，<code>supervisor</code>和<code>uwsgi</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt-get install nginx</span><br><span class="line">apt-get install supervisor</span><br><span class="line">pip install uwsgi</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，我们来测试一下<code>uwsgi</code>。我们先将<code>run.py</code>中的<code>port</code>去掉，保留<code>host</code>:</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ft4rb3a9doj30fw05o3yf.jpg" alt=""></p>
+<p>保存。</p>
+<p>python2运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uwsgi --socket 0.0.0.0:5000 --protocol&#x3D;http -w run:app</span><br></pre></td></tr></table></figure>
+
+<p>python3运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uwsgi --socket 0.0.0.0:5000 -w run:app</span><br></pre></td></tr></table></figure>
+
+<p>然后再在浏览器上输入<code>http://x.x.x.x:5000</code>，看到正确输出<code>Hello World!</code>，就表示uwsgi安装正确，我们就可以使用uwsgi来启动flask服务了。同时，我们可以看到服务器上输出如下信息：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4r60j0vtj31kw0t1dlb.jpg" alt=""></p>
+<p>但是这种方法还是每次需要从命令行启动，太麻烦了。下面我们来做一些配置。在<code>/var/www/weixin/</code>目录下创建配置文件<code>weixin_uwsgi.ini</code>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[uwsgi]</span><br><span class="line">module = run:app</span><br><span class="line">master = true</span><br><span class="line">processes = 4</span><br><span class="line">chdir = /var/www/weixin</span><br><span class="line">socket = /var/www/weixin/weixin_uwsgi.sock</span><br><span class="line">logto = /var/www/weixin/%n.log</span><br><span class="line">chmod-socket = 777</span><br><span class="line">vacuum = true</span><br><span class="line">http = 0.0.0.0:5000</span><br></pre></td></tr></table></figure>
+
+<p>配置完成后运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uwsgi --ini weixin_uwsgi.ini</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ft4rnilve9j30z404wjrj.jpg" alt=""></p>
+<p>就会在项目目录下生成<code>weixin_uwsgi.sock</code>文件，这个文件一般大小为0，它是用来和<code>Nginx</code>通信的。</p>
+<p>这时候，我们不能<code>ctrl+c</code>杀掉这个进程，重新开一个连接窗口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 进入项目目录</span><br><span class="line">cd &#x2F;var&#x2F;www&#x2F;weixin</span><br><span class="line"># 激活虚拟环境</span><br><span class="line">source venv&#x2F;bin&#x2F;activate</span><br><span class="line"># 查看当前目录下的文件</span><br><span class="line">ll</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4rnoucbdj30vm0fojsv.jpg" alt=""></p>
+<p>接下来，我们开始配置<code>Nginx</code>。</p>
+<p>删除nginx的默认配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm &#x2F;etc&#x2F;nginx&#x2F;sites-enabled&#x2F;default</span><br></pre></td></tr></table></figure>
+
+<p>然后在我们的项目目录下创建nginx配置文件<code>vim /var/www/weixin/weixin_nginx.conf</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen  80;</span><br><span class="line">    server_name x.x.x.x; #公网地址</span><br><span class="line">    location &#x2F; &#123;</span><br><span class="line">        include      uwsgi_params;</span><br><span class="line">        uwsgi_pass unix:&#x2F;var&#x2F;www&#x2F;weixin&#x2F;weixin_uwsgi.sock;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4rwl6815j30sy0ag3ys.jpg" alt=""></p>
+<p>保存退出。将<code>weixin_nginx.conf</code>软链接到nginx的<code>conf.d</code>目录下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s &#x2F;var&#x2F;www&#x2F;weixin&#x2F;weixin_nginx.conf  &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>重启nginx服务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;init.d&#x2F;nginx restart</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4ryhbuivj30yk05adg9.jpg" alt=""></p>
+<p>看到ok就表示nginx正常启动。这时不出意外，你在浏览器中输入<code>http://x.x.x.x</code>，就可以看到<code>Hello World!</code>。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ft4s6z8lr4j30j30763yt.jpg" alt=""></p>
+<p>这样我们就不用再加5000的端口号，直接用ip地址和默认的80端口就可以访问了。</p>
+<h5 id="使用supervisor引导uwsgi"><a href="#使用supervisor引导uwsgi" class="headerlink" title="使用supervisor引导uwsgi"></a>使用supervisor引导uwsgi</h5><p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ft4rnilve9j30z404wjrj.jpg" alt=""></p>
+<p>这时候我们再回到前一个运行<code>uwsgi</code>的窗口，<code>uwsgi</code>保持运行的状态，我们不能断开它，也不能做其他任何事情，一旦服务器断开连接，，<code>uwsgi</code>服务就会关闭，<code>weixin_uwsgi.sock</code>文件就会消失，这时再访问网站，nginx就会报错：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft4sdilk8bj30h70460sk.jpg" alt=""></p>
+<p>所以<code>supervisor</code>就派上用场了。我们在项目目录下创建supervisor配置文件<code>vim /var/www/weixin/weixin_supervisor.conf</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[program:weixin]</span><br><span class="line"># 启动命令入口</span><br><span class="line">command&#x3D;&#x2F;var&#x2F;www&#x2F;weixin&#x2F;venv&#x2F;bin&#x2F;uwsgi &#x2F;var&#x2F;www&#x2F;weixin&#x2F;weixin_uwsgi.ini</span><br><span class="line"># 命令程序所在目录</span><br><span class="line">directory&#x3D;&#x2F;var&#x2F;www&#x2F;weixin</span><br><span class="line">#运行命令的用户名</span><br><span class="line">user&#x3D;root</span><br><span class="line">autostart&#x3D;true</span><br><span class="line">autorestart&#x3D;true</span><br><span class="line">#日志地址</span><br><span class="line">stdout_logfile&#x3D;&#x2F;var&#x2F;www&#x2F;weixin&#x2F;weixin_supervisor.log</span><br></pre></td></tr></table></figure>
+
+<p>保存退出后，<code>ln -s /var/www/weixin/weixin_supervisor.conf /etc/supervisor/conf.d/weixin_supervisor.conf</code> 软链接到supervisor的配置文件夹，然后启动supervisor服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;init.d&#x2F;supervisor restart</span><br></pre></td></tr></table></figure>
+
+<p>至此，flask就可以稳定运行了。</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.JPG" alt="www 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.JPG" alt="www 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>www
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://weiweiblog.cn/tuling_flask/" title="手把手教你用图灵机器人做微信公众号自动回复助手">https://weiweiblog.cn/tuling_flask/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/flask/" rel="tag"><i class="fa fa-tag"></i> flask</a>
+              <a href="/tags/nginx/" rel="tag"><i class="fa fa-tag"></i> nginx</a>
+              <a href="/tags/supervisor/" rel="tag"><i class="fa fa-tag"></i> supervisor</a>
+              <a href="/tags/%E5%9B%BE%E7%81%B5/" rel="tag"><i class="fa fa-tag"></i> 图灵</a>
+              <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag"><i class="fa fa-tag"></i> 微信公众号</a>
+          </div>
+        <div class="_9ijahrma7rg"></div>
+        <script type="text/javascript">
+            (window.slotbydup = window.slotbydup || []).push({
+                id: "u6046082",
+                container: "_9ijahrma7rg",
+                async: true
+            });
+        </script>
+        <!-- 多条广告如下脚本只需引入一次 -->
+        <script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/cm.js" async="async" defer="defer" >
+        </script>
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/cloud/" rel="prev" title="云服务器上手教程">
+      <i class="fa fa-chevron-left"></i> 云服务器上手教程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/python_sitemap/" rel="next" title="手动生成sitemap">
+      手动生成sitemap <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验前提"><span class="nav-number">1.</span> <span class="nav-text">实验前提</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、创建图灵机器人"><span class="nav-number">2.</span> <span class="nav-text">一、创建图灵机器人</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、接入微信公众号"><span class="nav-number">3.</span> <span class="nav-text">二、接入微信公众号</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-搭建服务"><span class="nav-number">3.1.</span> <span class="nav-text">1. 搭建服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-接入图灵机器人"><span class="nav-number">3.2.</span> <span class="nav-text">2. 接入图灵机器人</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、部署flask服务"><span class="nav-number">4.</span> <span class="nav-text">三、部署flask服务</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="www"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">www</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">131</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">108</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wwwxmu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wwwxmu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:www@xmu.edu.cn" title="E-Mail → mailto:www@xmu.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/1007705782" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;1007705782" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/weiweiblog" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;weiweiblog" rel="noopener" target="_blank"><i class="fa fa-fw fa-custom icon-zhihu"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/20836937" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;20836937" rel="noopener" target="_blank"><i class="fa fa-fw fa-custom icon-bilibili-line"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/67eb7ed414d3" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;67eb7ed414d3" rel="noopener" target="_blank"><i class="fa fa-fw fa-custom icon-CN_jianshu"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+       (  •̆ ᵕ •̆ )◞♡ 您是小站的第 <i class="fa fa-user"></i>
+      </span>
+         <span class="site-uv" title="总访客量">
+       <span id="busuanzi_value_site_uv"></span> 
+      </span> 位客人
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        小站已经曝光 <i class="fa fa-eye"></i>
+      </span>
+       <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span> 
+      </span> 次啦 (ง •̀o•́)ง  
+    </span>
+</div>
+
+
+
+
+
+
+
+
+        
+
+<div class="copyright">
+  <div id="days"></div>
+
+
+<span class="post-meta-divider">|</span>
+
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">尾尾部落</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">273k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:08</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+ <span class="post-meta-divider">|</span>
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">闽ICP备16006719号 </a>
+  </div>
+
+
+<script>
+function show_date_time(){
+    window.setTimeout("show_date_time()", 1000);
+    BirthDay=new Date("09/15/2016 02:02:02");
+    today=new Date();
+    timeold=(today.getTime()-BirthDay.getTime());
+    sectimeold=timeold/1000
+    secondsold=Math.floor(sectimeold);
+    msPerDay=24*60*60*1000
+    e_daysold=timeold/msPerDay
+    daysold=Math.floor(e_daysold);
+    e_hrsold=(e_daysold-daysold)*24;
+    hrsold=setzero(Math.floor(e_hrsold));
+    e_minsold=(e_hrsold-hrsold)*60;
+    minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+    seconds=setzero(Math.floor((e_minsold-minsold)*60));
+    document.getElementById('days').innerHTML="小站已运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+}
+function setzero(i) {
+    if (i<10) {
+        i="0" + i
+    };
+    return i;
+}
+show_date_time();
+</script>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : false,
+      appId      : 'AoNMPudz1mpjgJhxQ2aJ7M5N-gzGzoHsz',
+      appKey     : 'vIyRaCfth6iGX9lizTpIc2HY',
+      placeholder: "开始讨论...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div class="moon-menu-item" onclick="back2bottom()">
+      <i class='fa fa-chevron-down'></i>    </div>
+    
+    <div class="moon-menu-item" onclick="back2top()">
+      <i class='fa fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button" onclick="moonMenuClick()">
+    <svg class="moon-menu-svg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+      <g class="moon-menu-points">
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy="-.8rem"></circle>
+        <circle class="moon-menu-point" r=".2rem"></circle>
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy=".8rem"></circle>
+      </g>
+    </svg>
+    <div class="moon-menu-icon">
+    </div>
+    <div class="moon-menu-text">
+    </div>
+  </div>
+</div>
+<script src="/js/injector.js"></script>
+</body>
+</html>

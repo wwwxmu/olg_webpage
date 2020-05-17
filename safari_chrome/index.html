@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="rdT17EW0Kh1apJgjy5BF3U5QQQKPSnklJwhpzY5TAi4">
+  <meta name="msvalidate.01" content="C8AEF300145F614C5139D7CA80541E48">
+  <meta name="baidu-site-verification" content="mOm9MG2oP2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script data-ad-client="ca-pub-7960294795324770" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="//dup.baidustatic.com/js/ds.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"weiweiblog.cn","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1. Markdown Here">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把Safari当chrome用（插件篇）">
+<meta property="og:url" content="https://weiweiblog.cn/safari_chrome/index.html">
+<meta property="og:site_name" content="尾尾部落">
+<meta property="og:description" content="1. Markdown Here">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fj4zknkyx6j30pc0ar0sp.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fj50gnj05ej318i0fcmyx.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fj50vxvveej30rs0lygmg.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fj50zwtqepj30oo08v3yg.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fj51avfiwjj30w20n175g.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fj522keic9j30uq0iq751.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fj52fn5j23j31980bemxk.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fj52j5si01j311e0i4t9a.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fj52q7l4azj31e00u0adb.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fj52yv8yroj31kw0smwi9.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fj53c5q34qj30v40mmjta.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fj53ff2mvaj31kw0mhgnx.jpg">
+<meta property="article:published_time" content="2018-07-07T07:48:05.000Z">
+<meta property="article:modified_time" content="2020-05-17T07:27:05.332Z">
+<meta property="article:author" content="www">
+<meta property="article:tag" content="MacOS">
+<meta property="article:tag" content="Safari">
+<meta property="article:tag" content="插件">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fj4zknkyx6j30pc0ar0sp.jpg">
+
+<link rel="canonical" href="https://weiweiblog.cn/safari_chrome/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>把Safari当chrome用（插件篇） | 尾尾部落</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-75337338-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-75337338-1');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c0cf4eed151bf6c4a0aab22fe95b7495";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="尾尾部落" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">尾尾部落</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">永远年轻，永远热泪盈眶！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">108</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">8</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">131</span></a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/wwwxmu" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://weiweiblog.cn/safari_chrome/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="www">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="尾尾部落">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          把Safari当chrome用（插件篇）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-07 15:48:05" itemprop="dateCreated datePublished" datetime="2018-07-07T15:48:05+08:00">2018-07-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-17 15:27:05" itemprop="dateModified" datetime="2020-05-17T15:27:05+08:00">2020-05-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%8E%A9%E8%BD%ACMac/" itemprop="url" rel="index"><span itemprop="name">玩转Mac</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/safari_chrome/" class="post-meta-item leancloud_visitors" data-flag-title="把Safari当chrome用（插件篇）" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/safari_chrome/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/safari_chrome/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="1-Markdown-Here"><a href="#1-Markdown-Here" class="headerlink" title="1. Markdown Here"></a>1. Markdown Here</h3><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fj4zknkyx6j30pc0ar0sp.jpg" alt=""></p>
+<blockquote>
+<p>Write email in Markdown, and then make it pretty. </p>
+</blockquote>
+<p><strong>主页：</strong><a href="http://markdown-here.com" target="_blank" rel="noopener">http://markdown-here.com</a></p>
+<p><strong>点评：</strong>在网页的编辑器中用markdown的语法输入内容，然后右击选择<code>Markdown Toggle</code>或者按下markdown here插件的图标或者按下快捷键<code>CTRL+ALT+M</code>即可完成渲染，让你轻松搞定内容排版。</p>
+<p>更多设置，请参考：<a href="http://www.veganshe.com/tech/use-markdown-here-to-layout/" target="_blank" rel="noopener">利用 Markdown Here 实现高效排版</a></p>
+<h3 id="2-AutoPagerize"><a href="#2-AutoPagerize" class="headerlink" title="2. AutoPagerize"></a>2. AutoPagerize</h3><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fj50gnj05ej318i0fcmyx.jpg" alt=""></p>
+<blockquote>
+<p>A browser Extension for auto loading paginated web pages. AutoPagerize use in many web site, and provide efficiently web browsing. </p>
+</blockquote>
+<p><strong>主页：</strong><a href="http://autopagerize.net" target="_blank" rel="noopener">http://autopagerize.net</a></p>
+<p><strong>点评：</strong>相信很多人曾经都有这么一个体会：当每次浏览网页、贴吧或者一些论坛时，PC端的页面中底部总会有这么几个字：“下一页”，只有当我们点击下一页后才能浏览第二页的信息，点击第三页才能浏览第三页的信息。这样不但浪费大量时间，还很麻烦！<code>AutoPagerize</code>就是为了解决这个痛点而生的！它是一款自动翻页插件，当你的浏览到页面底部时，它便会帮你自动加载下一页的内容无缝拼接到当前页底部，省去你点击下一页的麻烦。</p>
+<h3 id="3-Scroll-To-Top-Button"><a href="#3-Scroll-To-Top-Button" class="headerlink" title="3. Scroll To Top Button"></a>3. Scroll To Top Button</h3><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fj50vxvveej30rs0lygmg.jpg" alt=""></p>
+<blockquote>
+<p>Safari Extension which adds a button that scrolls to the top of the page. Inspired by the one on the Tumblr Dashboard. </p>
+</blockquote>
+<p><strong>主页：</strong><a href="http://www.scrolltotopbutton.com" target="_blank" rel="noopener">http://www.scrolltotopbutton.com</a></p>
+<p><strong>点评：</strong>Scroll To Top Button顾名思义就是在页面中增加一个to top的按钮，点一下即可飞回页面顶部，该插件配合<code>AutoPagerize</code>真是天作之合啊！</p>
+<h3 id="4-Polyglot"><a href="#4-Polyglot" class="headerlink" title="4. Polyglot"></a>4. Polyglot</h3><p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fj50zwtqepj30oo08v3yg.jpg" alt=""></p>
+<blockquote>
+<p>The missing Safari extension that translates selected text into your native language. </p>
+</blockquote>
+<p><strong>主页：</strong><a href="https://github.com/uetchy/Polyglot" target="_blank" rel="noopener">https://github.com/uetchy/Polyglot</a></p>
+<p><strong>点评：</strong>一直在寻找谷歌浏览器中选词翻译的工具（不是整页翻译），终于让我找到了Polyglot。它调用的是谷歌翻译的接口，速度也还可以，翻译的界面也挺美观，唯一的缺点是不能选中文本自动翻译，还要点击一下插件按钮或者按快捷键，不过聊胜于无，先用着，期待发现更好用的翻译插件吧。</p>
+<blockquote>
+<p>该插件存在bug，有些按钮设置成快捷键还不能用，开发者自己说了“Some key combinations are preblematic. Try another one”。我设置成<code>Control+1</code>亲测可用 </p>
+</blockquote>
+<h3 id="5-TabList"><a href="#5-TabList" class="headerlink" title="5. TabList"></a>5. TabList</h3><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fj51avfiwjj30w20n175g.jpg" alt=""></p>
+<blockquote>
+<p>This Browser Extension creates a list of links to all open tabs, in all open windows.</p>
+</blockquote>
+<blockquote>
+<p>The list is cleanly organized, and you have the ability to save lists for later. </p>
+</blockquote>
+<p><strong>主页：</strong><a href="https://tablister.com" target="_blank" rel="noopener">https://tablister.com</a></p>
+<p><strong>点评：</strong>Chrome的深度用者应该对OneTab不陌生吧。我们经常会一次打开好多tab，很多是会用到的，又不舍得关，内存又耗着，这个时候点击下OneTab，你当前所有打开的页面都会被关闭，整合呈现成为一个列表，显示在一个新打开的 OneTab 标签页中。<code>TabList</code>就是Safari版的OneTab，它可以一键关闭所有开者的页面，并把它们的链接都保存下来放在新生成的列表页面中，方便随时打开。麻麻再也不用担心我开太多页面会把浏览器爆掉了～～～e</p>
+<h3 id="6-围脖是个好图床"><a href="#6-围脖是个好图床" class="headerlink" title="6. 围脖是个好图床"></a>6. 围脖是个好图床</h3><p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fj522keic9j30uq0iq751.jpg" alt=""></p>
+<p><strong>主页：</strong><a href="http://weibotuchuang.sinaapp.com" target="_blank" rel="noopener">http://weibotuchuang.sinaapp.com</a></p>
+<p><strong>说明：</strong>图床：网络相册，或叫在线相册，为运行、储存以及翻阅、分享于互联网的相册。<code>围脖是个好图床</code>就是利用新浪微博来保存图片，使用简单。</p>
+<blockquote>
+<p>注意任何第三方的免费图片储存服务都无法保证长期可用，也无法保证一直可用外链，把数据掌握在自己手里才靠谱。 </p>
+</blockquote>
+<h3 id="7-NoMoreiTunes"><a href="#7-NoMoreiTunes" class="headerlink" title="7. NoMoreiTunes"></a>7. NoMoreiTunes</h3><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fj52fn5j23j31980bemxk.jpg" alt=""></p>
+<blockquote>
+<p>Preventing iTunes Preview and App Store pages in Safari from launching iTunes since 2010. </p>
+</blockquote>
+<p><strong>主页：</strong><a href="http://nomoreitunes.einserver.de" target="_blank" rel="noopener">http://nomoreitunes.einserver.de</a></p>
+<p><strong>说明：</strong>打开App Store应用链接只打开网页不打开 iTunes</p>
+<h3 id="8-mama2"><a href="#8-mama2" class="headerlink" title="8. mama2"></a>8. mama2</h3><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fj52j5si01j311e0i4t9a.jpg" alt=""></p>
+<p><strong>主页：</strong><a href="http://zythum.github.io/mama2/" target="_blank" rel="noopener">http://zythum.github.io/mama2/</a></p>
+<p><strong>说明：</strong>【妈妈再也不用担心我的 MacBook 发热了计划2】妈妈计划用于解决在看视频网站时 MacBook 发热严重的问题。使用 video 来替换原来的 flash 播放器。</p>
+<p>目前网站支持列表:</p>
+<ul>
+<li>哔哩哔哩弹幕视频网</li>
+<li>优酷-中国领先视频网站</li>
+<li>土豆-每个人都是生活的导演</li>
+<li>爱奇艺-中国领先的视频门户</li>
+<li>搜狐视频</li>
+<li>芒果tv</li>
+<li>熊猫tv</li>
+<li>音悦台</li>
+<li>百度网盘</li>
+<li>秒拍视频</li>
+</ul>
+<h3 id="9-Octotree"><a href="#9-Octotree" class="headerlink" title="9. Octotree"></a>9. Octotree</h3><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fj52q7l4azj31e00u0adb.jpg" alt=""></p>
+<blockquote>
+<p>Browser extension (Chrome, Firefox, Opera and Safari) to show a code tree on GitHub. Awesome for exploring project source without having to pull every single repository to your machine. </p>
+</blockquote>
+<p><strong>主页：</strong><a href="https://github.com/buunguyen/octotree" target="_blank" rel="noopener">https://github.com/buunguyen/octotree</a></p>
+<p><strong>说明：</strong>一定是程序猿的最爱了，它能够树形的方式显示 GitHub 项目的目录结构，让你在浏览Github代码的时候，体验到IDE式的快感。</p>
+<h3 id="10-Vimari"><a href="#10-Vimari" class="headerlink" title="10. Vimari"></a>10. Vimari</h3><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fj52yv8yroj31kw0smwi9.jpg" alt=""></p>
+<blockquote>
+<p>Vimari is a Safari extension that provides keyboard based navigation. The code is heavily based on &#8216;vimium&#8217;, a chrome extension that provides much more extensive features. </p>
+</blockquote>
+<p><strong>主页：</strong><a href="https://github.com/guyht/vimari" target="_blank" rel="noopener">https://github.com/guyht/vimari</a></p>
+<p><strong>说明：</strong>safari快捷键神器，让你可以像使用vim一样用快捷键操作Safari，体验飞一般的快感。</p>
+<blockquote>
+<p>附上Vimium的快捷键，有一些是vimari没有的，还有一些不一样的，可以自己设置，怎么舒服怎么来。</p>
+</blockquote>
+<blockquote>
+</blockquote>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fj53c5q34qj30v40mmjta.jpg" alt=""> </p>
+<h3 id="11-Evernote-Web-Clipper"><a href="#11-Evernote-Web-Clipper" class="headerlink" title="11. Evernote Web Clipper"></a>11. Evernote Web Clipper</h3><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fj53ff2mvaj31kw0mhgnx.jpg" alt=""></p>
+<blockquote>
+<p>像剪报纸一样，「剪藏」你最爱的网页 </p>
+</blockquote>
+<p><strong>主页：</strong><a href="https://evernote.com/intl/zh-cn/products/webclipper/" target="_blank" rel="noopener">https://evernote.com/intl/zh-cn/products/webclipper/</a></p>
+<p><strong>说明：</strong>一键保存网页，轻松圈出重点，自动识别网页正文，智能去广告，轻松收藏给予你灵感的一切网页。</p>
+<blockquote>
+<h5 id="以上排名不分先后，如果你还有更神奇的Safari插件，请留言分享！"><a href="#以上排名不分先后，如果你还有更神奇的Safari插件，请留言分享！" class="headerlink" title="以上排名不分先后，如果你还有更神奇的Safari插件，请留言分享！"></a>以上排名不分先后，如果你还有更神奇的Safari插件，请留言分享！</h5></blockquote>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.JPG" alt="www 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.JPG" alt="www 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>www
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://weiweiblog.cn/safari_chrome/" title="把Safari当chrome用（插件篇）">https://weiweiblog.cn/safari_chrome/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/MacOS/" rel="tag"><i class="fa fa-tag"></i> MacOS</a>
+              <a href="/tags/Safari/" rel="tag"><i class="fa fa-tag"></i> Safari</a>
+              <a href="/tags/%E6%8F%92%E4%BB%B6/" rel="tag"><i class="fa fa-tag"></i> 插件</a>
+          </div>
+        <div class="_9ijahrma7rg"></div>
+        <script type="text/javascript">
+            (window.slotbydup = window.slotbydup || []).push({
+                id: "u6046082",
+                container: "_9ijahrma7rg",
+                async: true
+            });
+        </script>
+        <!-- 多条广告如下脚本只需引入一次 -->
+        <script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/cm.js" async="async" defer="defer" >
+        </script>
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/mac_launchctl/" rel="prev" title="Mac中的定时任务利器：launchctl">
+      <i class="fa fa-chevron-left"></i> Mac中的定时任务利器：launchctl
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Memorabilia/" rel="next" title="【2017-09-05】博客大事记">
+      【2017-09-05】博客大事记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Markdown-Here"><span class="nav-number">1.</span> <span class="nav-text">1. Markdown Here</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-AutoPagerize"><span class="nav-number">2.</span> <span class="nav-text">2. AutoPagerize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Scroll-To-Top-Button"><span class="nav-number">3.</span> <span class="nav-text">3. Scroll To Top Button</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Polyglot"><span class="nav-number">4.</span> <span class="nav-text">4. Polyglot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-TabList"><span class="nav-number">5.</span> <span class="nav-text">5. TabList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-围脖是个好图床"><span class="nav-number">6.</span> <span class="nav-text">6. 围脖是个好图床</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-NoMoreiTunes"><span class="nav-number">7.</span> <span class="nav-text">7. NoMoreiTunes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-mama2"><span class="nav-number">8.</span> <span class="nav-text">8. mama2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Octotree"><span class="nav-number">9.</span> <span class="nav-text">9. Octotree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-Vimari"><span class="nav-number">10.</span> <span class="nav-text">10. Vimari</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-Evernote-Web-Clipper"><span class="nav-number">11.</span> <span class="nav-text">11. Evernote Web Clipper</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="www"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">www</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">131</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">108</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wwwxmu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wwwxmu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:www@xmu.edu.cn" title="E-Mail → mailto:www@xmu.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/1007705782" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;1007705782" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/weiweiblog" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;weiweiblog" rel="noopener" target="_blank"><i class="fa fa-fw fa-custom icon-zhihu"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/20836937" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;20836937" rel="noopener" target="_blank"><i class="fa fa-fw fa-custom icon-bilibili-line"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/67eb7ed414d3" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;67eb7ed414d3" rel="noopener" target="_blank"><i class="fa fa-fw fa-custom icon-CN_jianshu"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+       (  •̆ ᵕ •̆ )◞♡ 您是小站的第 <i class="fa fa-user"></i>
+      </span>
+         <span class="site-uv" title="总访客量">
+       <span id="busuanzi_value_site_uv"></span> 
+      </span> 位客人
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        小站已经曝光 <i class="fa fa-eye"></i>
+      </span>
+       <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span> 
+      </span> 次啦 (ง •̀o•́)ง  
+    </span>
+</div>
+
+
+
+
+
+
+
+
+        
+
+<div class="copyright">
+  <div id="days"></div>
+
+
+<span class="post-meta-divider">|</span>
+
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">尾尾部落</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">273k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:08</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+ <span class="post-meta-divider">|</span>
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">闽ICP备16006719号 </a>
+  </div>
+
+
+<script>
+function show_date_time(){
+    window.setTimeout("show_date_time()", 1000);
+    BirthDay=new Date("09/15/2016 02:02:02");
+    today=new Date();
+    timeold=(today.getTime()-BirthDay.getTime());
+    sectimeold=timeold/1000
+    secondsold=Math.floor(sectimeold);
+    msPerDay=24*60*60*1000
+    e_daysold=timeold/msPerDay
+    daysold=Math.floor(e_daysold);
+    e_hrsold=(e_daysold-daysold)*24;
+    hrsold=setzero(Math.floor(e_hrsold));
+    e_minsold=(e_hrsold-hrsold)*60;
+    minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+    seconds=setzero(Math.floor((e_minsold-minsold)*60));
+    document.getElementById('days').innerHTML="小站已运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+}
+function setzero(i) {
+    if (i<10) {
+        i="0" + i
+    };
+    return i;
+}
+show_date_time();
+</script>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : false,
+      appId      : 'AoNMPudz1mpjgJhxQ2aJ7M5N-gzGzoHsz',
+      appKey     : 'vIyRaCfth6iGX9lizTpIc2HY',
+      placeholder: "开始讨论...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div class="moon-menu-item" onclick="back2bottom()">
+      <i class='fa fa-chevron-down'></i>    </div>
+    
+    <div class="moon-menu-item" onclick="back2top()">
+      <i class='fa fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button" onclick="moonMenuClick()">
+    <svg class="moon-menu-svg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+      <g class="moon-menu-points">
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy="-.8rem"></circle>
+        <circle class="moon-menu-point" r=".2rem"></circle>
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy=".8rem"></circle>
+      </g>
+    </svg>
+    <div class="moon-menu-icon">
+    </div>
+    <div class="moon-menu-text">
+    </div>
+  </div>
+</div>
+<script src="/js/injector.js"></script>
+</body>
+</html>
